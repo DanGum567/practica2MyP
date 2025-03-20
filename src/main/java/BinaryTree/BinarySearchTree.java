@@ -32,6 +32,10 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
 
     public BinarySearchTree(Comparator<T> comparator) {
         // TODO
+        this.comparator = comparator;
+        this.left = null;
+        this.right = null;
+        this.value = null;
     }
 
     @Override
