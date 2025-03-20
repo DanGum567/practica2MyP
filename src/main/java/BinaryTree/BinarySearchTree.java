@@ -102,20 +102,39 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     }
 
     @Override
-    public T maximum() {
-        // TODO
-        return null;
+    public T maximum(){
+        if(this.right == null){
+            return this.value;
+        }
+        return this.right.maximum();
     }
 
     @Override
     public void removeBranch(T value){
         // TODO
+        if(!this.contains(value)){
+            throw new BinarySearchTreeException("El valor no existe");
+        } 
+        
     }
 
     @Override
     public int size() {
-        //TODO
-        return 0;
+        int size = 0;
+        if(this.value == null){
+            return 0;
+        }
+        else{
+          ++size;
+          if(this.right != null){
+            size  += this.right.size();     
+           }
+           if(this.left != null){
+           // size += this.element;
+           }
+       }
+       return 0;
+        
     }
 
     @Override
