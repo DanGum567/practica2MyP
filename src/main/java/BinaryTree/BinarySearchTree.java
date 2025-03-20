@@ -38,6 +38,22 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
         this.value = null;
     }
 
+    public Comparator<T> getComparator() {
+        return comparator;
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public BinarySearchTree<T> getLeft() {
+        return left;
+    }
+
+    public BinarySearchTree<T> getRight() {
+        return right;
+    }
+
     @Override
     public void insert(T value) {
         // TODO
