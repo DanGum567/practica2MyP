@@ -17,3 +17,6 @@ buildNumber.properties
 .classpath
 # Mac file
 .DS_Store
+
+#IntelIJ
+workspace.xml

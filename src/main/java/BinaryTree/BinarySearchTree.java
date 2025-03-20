@@ -41,24 +41,48 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     @Override
     public void insert(T value) {
         // TODO
+        if(this.value == null) { //Arbol sin elementos
+            this.value = value;
+        }else if (comparator.compare(value, this.value) < 0 ) { //value se deberá poner a la izq.
+            left.insert(value);
+        }else if (comparator.compare(value, this.value) > 0 ) { //value se coloca a la drch.
+            right.insert(value);
+        }
+        else {
+            throw new BinarySearchTreeException("El elemento ya esta en el árbol");
+        }
     }
 
     @Override
     public boolean isLeaf() {
         // TODO
-        return false;
+        return (left == null && right == null) ? true : false;
     }
 
     @Override
     public boolean contains(T value) {
         // TODO
-        return false;
+        if (this.value == value) {
+            return true;
+        }else if (!isLeaf()){
+            if(comparator.compare(value, this.value) < 0) {
+                return left.contains(value);
+            }else{
+                return right.contains(value);
+            }
+        }else{
+            return false;
+        }
     }
 
     @Override
     public T minimum() {
         // TODO
-        return null;
+        if (left == null) {
+            return this.value;
+        }else{
+            return left.minimum();
+        }
     }
 
     @Override
