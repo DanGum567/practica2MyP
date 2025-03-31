@@ -7,6 +7,7 @@
     <list default="true" id="f3548c55-a109-4987-8550-711fd031dbc0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BinaryTree/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BinaryTree/BinarySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BinaryTree/BinarySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BinaryTree/BinarySearchTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +17,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/test/java/BinaryTree/BinarySearchTreeTest.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -24,16 +28,115 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Flipaduz/Documents/GitHub/practica2MyP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.BinarySearchTreeTest.executor": "Run",
+    "JUnit.BinarySearchTreeTest.insert_nullArbolVacio_DevuelveException.executor": "Run",
+    "JUnit.BinarySearchTreeTest.isLeaf_arbolEsHoja_DevuelveTrue.executor": "Run",
+    "JUnit.BinarySearchTreeTest.isLeaf_arbolNoEsHoja_DevuelveFalse.executor": "Run",
+    "JUnit.BinarySearchTreeTest.isLeaf_arbolVacio_DevuelveException.executor": "Run",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Flipaduz/Documents/GitHub/practica2MyP",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager" selected="JUnit.BinarySearchTreeTest.contains_elementoEstaEnArbol_DevuelveTrue">
+    <configuration name="BinarySearchTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit5-mps-uma" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BinaryTree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BinaryTree" />
+      <option name="MAIN_CLASS_NAME" value="BinaryTree.BinarySearchTreeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinarySearchTreeTest.contains_elementoEstaEnArbol_DevuelveTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit5-mps-uma" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BinaryTree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BinaryTree" />
+      <option name="MAIN_CLASS_NAME" value="BinaryTree.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="contains_elementoEstaEnArbol_DevuelveTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinarySearchTreeTest.isLeaf_arbolEsHoja_DevuelveTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit5-mps-uma" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BinaryTree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BinaryTree" />
+      <option name="MAIN_CLASS_NAME" value="BinaryTree.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="isLeaf_arbolEsHoja_DevuelveTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinarySearchTreeTest.isLeaf_arbolNoEsHoja_DevuelveFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit5-mps-uma" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BinaryTree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BinaryTree" />
+      <option name="MAIN_CLASS_NAME" value="BinaryTree.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="isLeaf_arbolNoEsHoja_DevuelveFalse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinarySearchTreeTest.isLeaf_arbolVacio_DevuelveException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit5-mps-uma" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BinaryTree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="BinaryTree" />
+      <option name="MAIN_CLASS_NAME" value="BinaryTree.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="isLeaf_arbolVacio_DevuelveException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BinarySearchTreeTest.contains_elementoEstaEnArbol_DevuelveTrue" />
+        <item itemvalue="JUnit.BinarySearchTreeTest" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.isLeaf_arbolEsHoja_DevuelveTrue" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.isLeaf_arbolNoEsHoja_DevuelveFalse" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.isLeaf_arbolVacio_DevuelveException" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -51,6 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742465064719</updated>
       <workItem from="1742465065900" duration="790000" />
+      <workItem from="1743414085394" duration="5835000" />
     </task>
     <servers />
   </component>

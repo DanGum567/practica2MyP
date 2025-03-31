@@ -56,13 +56,28 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
 
     @Override
     public void insert(T value) {
-        // TODO
-        if(this.value == null) { //Arbol sin elementos
+        // TODO Review
+        if (value == null){
+            throw new BinarySearchTreeException("No se puede insertar un elemento null");
+        }
+        else if(this.value == null) { //Arbol sin elementos
             this.value = value;
         }else if (comparator.compare(value, this.value) < 0 ) { //value se deberá poner a la izq.
-            left.insert(value);
+            if(left == null){
+                BinarySearchTree<T> newTree = new BinarySearchTree(this.comparator);
+                newTree.insert(value);
+                left = newTree;
+            }else{
+                left.insert(value);
+            }
         }else if (comparator.compare(value, this.value) > 0 ) { //value se coloca a la drch.
-            right.insert(value);
+            if(left == null){
+                BinarySearchTree<T> newTree = new BinarySearchTree(this.comparator);
+                newTree.insert(value);
+                right = newTree;
+            }else{
+                right.insert(value);
+            }
         }
         else {
             throw new BinarySearchTreeException("El elemento ya esta en el árbol");
@@ -71,13 +86,17 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
 
     @Override
     public boolean isLeaf() {
-        // TODO
-        return (left == null && right == null) ? true : false;
+        // TODO Review
+        if(getValue() == null){
+            throw new BinarySearchTreeException("El arbol no tiene elementos");
+        }else{
+            return (left == null && right == null) ? true : false;
+        }
     }
 
     @Override
     public boolean contains(T value) {
-        // TODO
+        // TODO Review
         if (this.value == value) {
             return true;
         }else if (!isLeaf()){
