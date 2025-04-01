@@ -1,6 +1,7 @@
 package BinaryTree;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     private Comparator<T> comparator;
@@ -160,6 +161,24 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     public int depth() {
         // TODO
         return 0;
+    }
+
+    @Override
+    public void removeValue(T value) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeValue'");
+    }
+
+    @Override
+    public List<T> inOrder() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'inOrder'");
+    }
+
+    @Override
+    public void balance() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'balance'");
     }
 
     // Complex operations
