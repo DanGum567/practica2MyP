@@ -1,7 +1,11 @@
 package BinaryTree;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Stack;
+import java.util.Collections;
 
 public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     private Comparator<T> comparator;
@@ -30,7 +34,6 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
 
         return render;
     }
-
     public BinarySearchTree(Comparator<T> comparator) {
         // TODO
         this.comparator = comparator;
@@ -38,106 +41,86 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
         this.right = null;
         this.value = null;
     }
-
-    public Comparator<T> getComparator() {
-        return comparator;
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public BinarySearchTree<T> getLeft() {
-        return left;
-    }
-
-    public BinarySearchTree<T> getRight() {
-        return right;
-    }
-
+   
     @Override
     public void insert(T value) {
-        // TODO Review
-        if (value == null){
-            throw new BinarySearchTreeException("No se puede insertar un elemento null");
-        }
-        else if(this.value == null) { //Arbol sin elementos
+        // TODO
+        if(this.value == null) { //Arbol sin elementos
             this.value = value;
-        }else if (comparator.compare(value, this.value) < 0 ) { //value se deberá poner a la izq.
-            if(left == null){
-                BinarySearchTree<T> newTree = new BinarySearchTree(this.comparator);
-                newTree.insert(value);
-                left = newTree;
-            }else{
-                left.insert(value);
+        }else if (comparator.compare(value, this.value) < 0 ) { //value se deberá insertar a la izq.
+            if(this.left == null){
+                left = new BinarySearchTree<>(comparator);
             }
+            left.insert(value);
         }else if (comparator.compare(value, this.value) > 0 ) { //value se coloca a la drch.
-            if(left == null){
-                BinarySearchTree<T> newTree = new BinarySearchTree(this.comparator);
-                newTree.insert(value);
-                right = newTree;
-            }else{
-                right.insert(value);
+            if(this.right == null){
+                right = new BinarySearchTree<>(comparator);
             }
-        }
-        else {
-            throw new BinarySearchTreeException("El elemento ya esta en el árbol");
+            right.insert(value);
         }
     }
-
     @Override
     public boolean isLeaf() {
-        // TODO Review
-        if(getValue() == null){
-            throw new BinarySearchTreeException("El arbol no tiene elementos");
-        }else{
-            return (left == null && right == null) ? true : false;
-        }
+        // TODO
+        if(this.value == null)
+            throw new BinarySearchTreeException("El arbol esta vacio");
+        return (left == null && right == null) ? true : false;
     }
-
     @Override
     public boolean contains(T value) {
-        // TODO Review
+        // TODO
         if (this.value == value) {
             return true;
         }else if (!isLeaf()){
-            if(comparator.compare(value, this.value) < 0) {
+            if(comparator.compare(value, this.value) < 0 && this.left != null) {
                 return left.contains(value);
-            }else{
+            }else if(comparator.compare(value, this.value) > 0 && this.right != null){
                 return right.contains(value);
             }
-        }else{
-            return false;
         }
+       return false;
     }
-
     @Override
     public T minimum() {
         // TODO
-        if (left == null) {
+        if(this.value == null){
+            throw new BinarySearchTreeException("El árbol está vacio");
+        }
+        else if (left == null) {
             return this.value;
         }else{
             return left.minimum();
         }
     }
-
     @Override
     public T maximum(){
-        if(this.right == null){
+        if(this.value == null){
+            throw new BinarySearchTreeException("El árbol está vacio");
+        }
+        else if(this.right == null){
             return this.value;
         }
         return this.right.maximum();
     }
-
     @Override
     public void removeBranch(T value){
         // TODO
-        if(!this.contains(value)){
+        if(this.value == null){
+            throw new BinarySearchTreeException("El arbol está vacio");
+        }
+        else if(comparator.compare(this.value, value) == 0){
+            this.value = null;
+            this.right = null;
+            this.left = null;
+        }else if (comparator.compare(this.value, value) < 0 && this.right != null){
+            this.right.removeBranch(value);
+        }else if(comparator.compare(this.value, value) > 0 && this.left != null){
+            this.left.removeBranch(value);
+        }else{
             throw new BinarySearchTreeException("El valor no existe");
-        } 
-        
+        }      
     }
-
+    
     @Override
     public int size() {
         int size = 0;
@@ -150,38 +133,104 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
             size  += this.right.size();     
            }
            if(this.left != null){
-           // size += this.element;
+           size += this.left.size();
            }
        }
-       return 0;
-        
+       return size;        
     }
 
     @Override
-    public int depth() {
-        // TODO
-        return 0;
-    }
-
-    @Override
-    public void removeValue(T value) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeValue'");
-    }
-
-    @Override
-    public List<T> inOrder() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inOrder'");
-    }
-
-    @Override
-    public void balance() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'balance'");
+    public int depth(){
+        int depthRight = 1;
+        int depthLeft = 1;
+        if(this.value == null){
+            return 0;
+        } else if(isLeaf()){
+            return 1;
+        }else{            
+            if(this.right != null){
+                depthRight += this.right.depth();
+            }
+            if(this.left != null){
+                depthLeft += this.left.depth();
+            }
+        }
+        return depthRight >= depthLeft ? depthRight : depthLeft;
     }
 
     // Complex operations
     // (Estas operaciones se incluirán más adelante para ser realizadas en la segunda
     // sesión de laboratorio de esta práctica)
+    /*
+     *    void removeValue(T value);
+     *    List<T> inOrder();
+     *    void balance();
+     */
+
+    @Override
+    public void removeValue(T val){
+        if(this.value == null){
+            throw new BinarySearchTreeException("El valor no existe");
+        } 
+        else if(comparator.compare(this.value, val) == 0){
+            T temp = null;
+            if(this.left != null){
+                temp = this.left.maximum(); 
+                this.removeValue(temp);
+                this.value = temp;
+            } else if(this.right != null){
+                temp = this.right.minimum();
+                this.removeValue(temp);
+                this.value = temp;
+            }else{
+                this.value = null;
+            }
+        }else if (comparator.compare(this.value, val) < 0 && this.right != null){
+            this.right.removeValue(val);
+        }else if(comparator.compare(this.value, val) > 0 && this.left != null){
+            this.left.removeValue(val);
+        }else{
+            throw new BinarySearchTreeException("El elemento no está en el arbol");
+        }
+    }
+
+    public List<T> inOrder(){
+        if(this.value == null){
+            return new ArrayList<>();
+        } 
+        Stack<T> inorder = new Stack<>();
+        if(this.left != null){
+           inorder.addAll(this.left.inOrder());
+        }
+        inorder.add(this.value);
+        if(this.right != null)
+        {
+            inorder.addAll(this.right.inOrder());
+        }
+        return new ArrayList<T>(inorder);
+    }
+
+
+    @Override
+    public void balance() {
+        List<T> sortedElements = inOrder();
+        // Si el tien más de un elemento puede ser balanceado
+        BinarySearchTree<T> balanced_bst = buildBalancedTree(sortedElements, 0, sortedElements.size() - 1);
+        if(balanced_bst != null){
+            this.value = balanced_bst.value;
+            this.left = balanced_bst.left;
+            this.right = balanced_bst.right;
+        }
+    }
+
+    private BinarySearchTree<T> buildBalancedTree(List<T> sorted, int start, int end){
+        if(start > end) return null;
+        int mid = (start + end)/2;
+        BinarySearchTree<T> newNode = new BinarySearchTree<>(this.comparator);
+        newNode.value = sorted.get(mid);
+        newNode.left = buildBalancedTree(sorted, start, mid-1);
+        newNode.right = buildBalancedTree(sorted, mid + 1, end);
+        return newNode;
+    }
+
 }
