@@ -1,11 +1,11 @@
 package BinaryTree;
 
+//Daniil Gumeniuk, Ángel Bayón Pazos 3º Software A
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
-import java.util.Collections;
 
 public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     private Comparator<T> comparator;
@@ -44,8 +44,10 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
    
     @Override
     public void insert(T value) {
-        // TODO
-        if(this.value == null) { //Arbol sin elementos
+        if(value == null) {
+            throw new BinarySearchTreeException("El valor no puede ser null");
+        }
+        else if(this.value == null) { //Arbol sin elementos
             this.value = value;
         }else if (comparator.compare(value, this.value) < 0 ) { //value se deberá insertar a la izq.
             if(this.left == null){
@@ -61,15 +63,16 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     }
     @Override
     public boolean isLeaf() {
-        // TODO
         if(this.value == null)
             throw new BinarySearchTreeException("El arbol esta vacio");
         return (left == null && right == null) ? true : false;
     }
     @Override
     public boolean contains(T value) {
-        // TODO
-        if (this.value == value) {
+        if (this.value == null) {
+            throw new BinarySearchTreeException("El arbol es vacio no contiene elementos.");
+        }
+        else if (this.value == value) {
             return true;
         }else if (!isLeaf()){
             if(comparator.compare(value, this.value) < 0 && this.left != null) {
@@ -77,12 +80,12 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
             }else if(comparator.compare(value, this.value) > 0 && this.right != null){
                 return right.contains(value);
             }
+            return false;
         }
        return false;
     }
     @Override
     public T minimum() {
-        // TODO
         if(this.value == null){
             throw new BinarySearchTreeException("El árbol está vacio");
         }
@@ -104,7 +107,6 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     }
     @Override
     public void removeBranch(T value){
-        // TODO
         if(this.value == null){
             throw new BinarySearchTreeException("El arbol está vacio");
         }
@@ -159,13 +161,6 @@ public class BinarySearchTree<T> implements BinarySearchTreeStructure<T> {
     }
 
     // Complex operations
-    // (Estas operaciones se incluirán más adelante para ser realizadas en la segunda
-    // sesión de laboratorio de esta práctica)
-    /*
-     *    void removeValue(T value);
-     *    List<T> inOrder();
-     *    void balance();
-     */
 
     @Override
     public void removeValue(T val){
